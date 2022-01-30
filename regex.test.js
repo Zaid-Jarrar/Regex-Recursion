@@ -23,11 +23,15 @@ which end with io (example@example.io) */
 
 
     function ioEmail(email){     
-        email = 'example@example.io'
-        let validation = /\w+@{0,1}\w+\.io$/g
+        let search1 = /\w+@\w+\.io$/g
+        let search2 = /\./g;
+        let search3 = /@/g;
+        let test1 = search1.test(email);
+        let test2 = email.match(search2);
+        let test3 = email.match(search3);
     
         // Add your logic.
-        return validation.test(email) }
+        return test1 && (test2.length === 1) && (test3.length === 1)}
 
 ioEmail('example@example.io')
 /* You have a text that contain image names with their extention you need to write a function to 
@@ -36,23 +40,16 @@ required extention are jpg, jpeg and png.
 */
 
 function imagesSearcher(text) {
-    let arr = [];     
-    arr.push(/\w+\.+(jpg|png|jpeg)/g);     
          
-     let search = text.match(arr)     
-     if (search == null ){  
-            return [] ;     }   
-      return search }
+    let arr = text.match(/\w+\.+(jpg|png|jpeg)/g);     
+     if (arr != null){
+         return arr;
+     }    
+     else{
+         return [];
+     }
+    }
     
-    
-    
-    
-    // let arr = [];
-    // let validation = /\w+\.(jpg|png|jpeg)/g
-    // arr.push(validation)
-
-
-    // return text.match(arr)
 
 imagesSearcher("Lorem ipsum dolor sit amet, consectetur adipiscing elit, cat.png sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. dog.jpg Ut enim ad minim veniam, quis nostrud exercitation ullamco cow.jpeg laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
 
